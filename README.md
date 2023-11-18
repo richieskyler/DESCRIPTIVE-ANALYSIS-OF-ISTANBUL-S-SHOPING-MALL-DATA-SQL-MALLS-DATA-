@@ -1,10 +1,9 @@
-# EXPLORATORY-ANALYSIS-OF-ISTANBUL-S-SHOPING-MALL-DATA-(SQL)
+# EXPLORATORY-ANALYSIS-OF-ISTANBUL-SHOPpING-MALL-CUSTOMER-DATA-(SQL)
 ## Introduction
 The main of this project is explore our customer shopping dataset to answer some busniess question and generate visualazation and insights from our dataset
 
 ## Objective
-To solve the business problem <b> Which products are commonly purchased together?<br> </b>
-How can we improve profit and customer's experience 
+The query our data and answer Business questions to gain insights on Istanbul's product and Customers
 
 
 ## Note
