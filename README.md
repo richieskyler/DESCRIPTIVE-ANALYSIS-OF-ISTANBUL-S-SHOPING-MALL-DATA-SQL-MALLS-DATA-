@@ -7,6 +7,6 @@ The query our data and answer Business questions to gain insights on Istanbul's 
 
 
 ## Note
-For more indept exploration of our dataset and generation of insights using python click the  <a href=" ">EDA using python</a> .
+For more indept exploration of our dataset and generation of insights using python click the  <a href="https://nbviewer.org/github/richieskyler/Exploratory-Analysis-of-Istanbul-Shopping-Malls-Customer-data-SQL---Python/blob/main/Customer%20Shopping%20data.ipynb">EDA using python</a> .
 <br>
 You can also analyse your data using the Tableau Dashboard : <a href="https://public.tableau.com/app/profile/richard.oloyede/viz/IstanbullMalls1/IstanbulMallsDashboard?publish=yes">Istanbul's Shopping Mall Dashboard</a>.
