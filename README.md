@@ -1,4 +1,4 @@
-# EXPLORATORY-ANALYSIS-OF-ISTANBUL-SHOPpING-MALL-CUSTOMER-DATA-(SQL)
+# EXPLORATORY-ANALYSIS-OF-ISTANBUL-SHOPPING-MALL-CUSTOMER-DATA-(SQL)
 ## Introduction
 The main of this project is explore our customer shopping dataset to answer some busniess question and generate visualazation and insights from our dataset
 
