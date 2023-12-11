@@ -15,9 +15,9 @@ The query our data and answer Business questions to gain insights on Istanbul's 
 		GROUP BY category 
 		ORDER BY SUM(price) DESC;
     ```
-    ![Top Products by Revenue Generated](Screenshots/top products.PNG)
-
-2. **TOP PRODUCTS BY QUANTITY SOLD**
+    ![Top Products by Revenue Generated](Screenshots/top_products.png)
+   
+3. **TOP PRODUCTS BY QUANTITY SOLD**
     ```sql
     SELECT category, SUM(quantity) total_quantity
 	    FROM orders o
@@ -26,7 +26,7 @@ The query our data and answer Business questions to gain insights on Istanbul's 
     ```
     ![Quantity sold](screenshots/visit_days.png)
 
-3. **WHAT PRODUCTS ARE WHICH GENDERS PURCHASING THE MOST?**
+4. **WHAT PRODUCTS ARE WHICH GENDERS PURCHASING THE MOST?**
     ```sql
    SELECT category, gender,SUM(quantity)
 	FROM orders o
@@ -36,7 +36,7 @@ The query our data and answer Business questions to gain insights on Istanbul's 
     ```
     ![Products bought by which gender](screenshots/first_purchased_item.png)
 
-4. **WHAT PRODUCTS ARE WHICH AGE GROUP PURCHAING THE MOST?**
+5. **WHAT PRODUCTS ARE WHICH AGE GROUP PURCHAING THE MOST?**
     ```sql
    SELECT category,
 	CASE WHEN age < 30 THEN 'Young Adult'
