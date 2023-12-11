@@ -26,57 +26,70 @@ The query our data and answer Business questions to gain insights on Istanbul's 
     ```
     ![Quantity sold](screenshots/visit_days.png)
 
-3. **First Item Purchased by Each Customer**
+3. **WHAT PRODUCTS ARE WHICH GENDERS PURCHASING THE MOST?**
     ```sql
-    SELECT customer_id, MIN(purchase_date) AS first_purchase_date, FIRST_VALUE(menu_item) OVER (PARTITION BY customer_id ORDER BY purchase_date) AS first_purchased_item FROM sales GROUP BY customer_id;
+   SELECT category, gender,SUM(quantity)
+	FROM orders o
+		JOIN customers c ON c.customer_id = o.cust_id
+        GROUP BY category, gender
+        ORDER BY 1,2;
     ```
-    ![First Purchased Item](screenshots/first_purchased_item.png)
+    ![Products bought by which gender](screenshots/first_purchased_item.png)
 
-4. **Most Purchased Item and Its Frequency**
+4. **WHAT PRODUCTS ARE WHICH AGE GROUP PURCHAING THE MOST?**
     ```sql
-    SELECT menu_item, COUNT(menu_item) AS purchase_count FROM sales GROUP BY menu_item ORDER BY purchase_count DESC LIMIT 1;
+   SELECT category,
+	CASE WHEN age < 30 THEN 'Young Adult'
+		 WHEN age < 50 THEN 'Middle Aged'
+		 ELSE 'Seniors'
+	END AS age_category , SUM(quantity) total_quantity
+		FROM customers c
+        JOIN orders o ON o.cust_id = c.customer_id
+        GROUP BY 1,2
+        ORDER BY 1,2 ;
     ```
-    ![Most Purchased Item](screenshots/most_purchased_item.png)
+    ![Products purchased by which age group](screenshots/most_purchased_item.png)
 
-5. **Most Popular Item for Each Customer**
-    ```sql
-    SELECT customer_id, menu_item, COUNT(menu_item) AS purchase_count FROM sales GROUP BY customer_id, menu_item ORDER BY purchase_count DESC LIMIT 1;
-    ```
-    ![Most Popular Item](screenshots/most_popular_item.png)
+## Customer Insights
 
-6. **First Item Purchased After Joining by Each Member**
+5. **WHICH AGE GROUP GENERATES THEY MOST REVENUE?**
     ```sql
-    SELECT m.customer_id, m.join_date, s.menu_item FROM members m LEFT JOIN sales s ON m.customer_id = s.customer_id AND s.purchase_date > m.join_date ORDER BY m.customer_id, s.purchase_date LIMIT 1;
+   SELECT
+	CASE WHEN age < 30 THEN 'Young Adult'
+		 WHEN age < 50 THEN 'Middle Aged'
+		 ELSE 'Seniors'
+	END AS age_category , ROUND(SUM(price),0) revenue
+		FROM customers c
+        JOIN orders o ON o.cust_id = c.customer_id
+        JOIN payments p ON p.pay_id = o.pay_id
+        GROUP BY age_category
+        ORDER BY revenue ;
     ```
-    ![First Item After Joining](screenshots/first_item_after_joining.png)
+    ![Age group by Revenue](screenshots/most_popular_item.png)
 
-7. **Item Purchased Just Before Joining for Each Member**
+6. **WHICH PAYMENT METHOD ARE CUSTOMERS USING THE MOST?**
     ```sql
-    SELECT m.customer_id, m.join_date, s.menu_item FROM members m LEFT JOIN sales s ON m.customer_id = s.customer_id AND s.purchase_date < m.join_date ORDER BY m.customer_id, s.purchase_date DESC LIMIT 1;
+    SELECT pay_method, COUNT(pay_method) frequency
+	FROM payments
+    GROUP BY pay_method
+    ORDER BY 2 DESC;
     ```
-    ![Item Before Joining](screenshots/item_before_joining.png)
+    ![Payment method used by customers](screenshots/first_item_after_joining.png)
 
-8. **Total Items and Amount Spent Before Joining for Each Member**
+7. **MOST POPUAR SHOPPING MALL**
     ```sql
-    SELECT m.customer_id, COUNT(s.menu_item) AS total_items, SUM(s.amount) AS total_amount FROM members m LEFT JOIN sales s ON m.customer_id = s.customer_id AND s.purchase_date < m.join_date GROUP BY m.customer_id;
-    ```
-    ![Total Items Before Joining](screenshots/total_items_before_joining.png)
+    SELECT shopping_mall, COUNT(shopping_mall) frequency
+	FROM orders
+    GROUP BY shopping_mall
+    ORDER BY 2 DESC;
 
-9. **Points Calculation Based on Spending**
-    ```sql
-    SELECT customer_id, SUM(amount) * 10 + CASE WHEN menu_item = 'sushi' THEN SUM(amount) ELSE 0 END * 10 AS total_points FROM sales GROUP BY customer_id, menu_item;
     ```
-    ![Points Calculation](screenshots/points_calculation.png)
+    ![Most Popular Mall](screenshots/item_before_joining.png)
 
-10. **Points Earned by Customers A and B in January**
-    ```sql
-    SELECT customer_id, SUM(CASE WHEN purchase_date >= '2023-01-01' AND purchase_date <= '2023-01-07' THEN amount * 10 * 2 ELSE amount * 10 END) AS total_points FROM sales WHERE customer_id IN ('A', 'B') GROUP BY customer_id;
-    ```
-    ![Points in January](screenshots/points_in_january.png)
 
 ## Conclusion
 
-This documentation provides a comprehensive overview of the SQL project for Danny's Diner, including the datasets, case study questions, SQL queries, and corresponding results. The screenshots enhance the clarity of the project's execution and make it easy for the team to review and understand the findings.
+This documentation provides a comprehensive overview of the SQL project for Istanbul's Shopping Mall, including the datasets, case study questions, SQL queries, and corresponding results. 
 
 
 
