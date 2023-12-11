@@ -15,7 +15,7 @@ The query our data and answer Business questions to gain insights on Istanbul's 
 		GROUP BY category 
 		ORDER BY SUM(price) DESC;
     ```
-    ![Top Products by Revenue Generated](screenshots/total_amount_spent.png)
+    ![Top Products by Revenue Generated](Screenshots/top_products.png)
 
 2. **TOP PRODUCTS BY QUANTITY SOLD**
     ```sql
