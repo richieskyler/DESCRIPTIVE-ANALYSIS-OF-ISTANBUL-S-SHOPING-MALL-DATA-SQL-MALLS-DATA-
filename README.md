@@ -17,16 +17,16 @@ The query our data and answer Business questions to gain insights on Istanbul's 
     ```
     ![Top Products by Revenue Generated](Screenshots/top_products.png)
    
-3. **TOP PRODUCTS BY QUANTITY SOLD**
+2. **TOP PRODUCTS BY QUANTITY SOLD**
     ```sql
     SELECT category, SUM(quantity) total_quantity
 	    FROM orders o
 		  GROUP BY category 
 		  ORDER BY SUM(quantity) DESC
     ```
-    ![Quantity sold](screenshots/visit_days.png)
+    ![Quantity sold](Screenshots/quantity_sold.png)
 
-4. **WHAT PRODUCTS ARE WHICH GENDERS PURCHASING THE MOST?**
+3. **WHAT PRODUCTS ARE WHICH GENDERS PURCHASING THE MOST?**
     ```sql
    SELECT category, gender,SUM(quantity)
 	FROM orders o
@@ -34,9 +34,9 @@ The query our data and answer Business questions to gain insights on Istanbul's 
         GROUP BY category, gender
         ORDER BY 1,2;
     ```
-    ![Products bought by which gender](screenshots/first_purchased_item.png)
+    ![Products bought by which gender](Screenshots/products_by_gender.png)
 
-5. **WHAT PRODUCTS ARE WHICH AGE GROUP PURCHAING THE MOST?**
+4. **WHAT PRODUCTS ARE WHICH AGE GROUP PURCHAING THE MOST?**
     ```sql
    SELECT category,
 	CASE WHEN age < 30 THEN 'Young Adult'
@@ -48,7 +48,7 @@ The query our data and answer Business questions to gain insights on Istanbul's 
         GROUP BY 1,2
         ORDER BY 1,2 ;
     ```
-    ![Products purchased by which age group](screenshots/most_purchased_item.png)
+    ![Products purchased by which age group](Screenshots/products_by_age_group.png)
 
 ## Customer Insights
 
@@ -65,7 +65,7 @@ The query our data and answer Business questions to gain insights on Istanbul's 
         GROUP BY age_category
         ORDER BY revenue ;
     ```
-    ![Age group by Revenue](screenshots/most_popular_item.png)
+    ![Age group by Revenue](Screenshots/revenue_by_age_group.png)
 
 6. **WHICH PAYMENT METHOD ARE CUSTOMERS USING THE MOST?**
     ```sql
@@ -74,7 +74,7 @@ The query our data and answer Business questions to gain insights on Istanbul's 
     GROUP BY pay_method
     ORDER BY 2 DESC;
     ```
-    ![Payment method used by customers](screenshots/first_item_after_joining.png)
+    ![Payment method used by customers](Screenshots/payment_method_by_customers.png)
 
 7. **MOST POPUAR SHOPPING MALL**
     ```sql
@@ -84,7 +84,7 @@ The query our data and answer Business questions to gain insights on Istanbul's 
     ORDER BY 2 DESC;
 
     ```
-    ![Most Popular Mall](screenshots/item_before_joining.png)
+    ![Most Popular Mall](Screenshots/popular_malls.png)
 
 
 ## Conclusion
